@@ -1,6 +1,5 @@
 package com.example.ble_esp
 
-/** Protocol: ESP32_01|temperatureC|distanceCm\n (max 64 characters). */
 object Telemetry {
     data class Sample(val device: String, val temperature: Double, val distance: Double)
     fun parse(line: String): Sample {

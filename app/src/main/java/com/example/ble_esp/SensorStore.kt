@@ -12,7 +12,6 @@ import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicBoolean
 
-/** Application-scoped: writes survive Activity recreation; Room is the source of truth. */
 class SensorStore private constructor(context: Context) {
     val dao = Room.databaseBuilder(context, MeasurementDatabase::class.java, "telemetry.db")
         .build().measurements()
@@ -59,7 +58,6 @@ class SensorStore private constructor(context: Context) {
                 val db=firestore()
                 val ownerUid = FirebaseAuth.getInstance().currentUser?.uid
                     ?: error("Debes iniciar sesión antes de sincronizar")
-                // Queue behind pending Room writes before querying this bounded batch.
                 val rows=disk.submit<List<Measurement>> { dao.pending(selectedTeam) }.get()
                 if (rows.isEmpty()) { done("No hay lecturas pendientes"); return@execute }
                 val batch=db.batch()
@@ -79,7 +77,6 @@ class SensorStore private constructor(context: Context) {
                         )
                     )
                 }
-                // A timed-out write may still reach the server. Stable document IDs make retries idempotent.
                 Tasks.await(batch.commit(), 20, TimeUnit.SECONDS)
                 disk.submit { dao.markSynced(rows.map { it.medicionId }) }.get()
                 done("${rows.size} lecturas confirmadas por Firestore. Repite si quedan pendientes.")

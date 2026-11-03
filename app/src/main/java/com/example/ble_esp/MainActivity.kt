@@ -484,7 +484,6 @@ class MainActivity : AppCompatActivity(), android.hardware.SensorEventListener {
             localRows=rows
             val latest=rows.distinctBy { "${it.dispositivoId}:${it.variable}" }
             tvLatest.text="ÚLTIMAS LECTURAS · ROOM · ${store.team}\n" + latest.joinToString("\n\n") { formatRow(it) }
-            // Preserve the explicitly selected remote view until Local is pressed.
             if (!tvHistory.text.startsWith("FIRESTORE") && !tvHistory.text.startsWith("Consultando")) renderLocal()
         }
         store.dao.pendingCount(store.team).observe(this) { count ->
