@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "973958303586",
+    "project_id": "evaluacion2-93f3b",
+    "storage_bucket": "evaluacion2-93f3b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:973958303586:android:d073d901953c35c67ca63b",
+        "android_client_info": {
+          "package_name": "com.example.ble_esp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKsotVIBlsaIyBhTufCo_2ldyM_0j48z8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

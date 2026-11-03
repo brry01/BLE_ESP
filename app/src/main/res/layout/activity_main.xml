@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true" android:background="#F1F1F1" android:fitsSystemWindows="true">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="24dp">
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Sensor Hub" android:textSize="30sp" android:textStyle="bold" android:textColor="#060814" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="ESP32 + Android · almacenamiento local" android:paddingBottom="16dp" />
+        <TextView android:id="@+id/tvEstado" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="BLE · desconectada" android:textSize="18sp" android:textColor="#060814" />
+        <Button android:id="@+id/btnBuscar" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Buscar y conectar ESP32" />
+        <Button android:id="@+id/btnDesconectar" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Desconectar BLE" />
+        <TextView android:id="@+id/tvDatos" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Sin telemetría ESP32" android:padding="16dp" android:background="#FFFFFF" />
+        <Button android:id="@+id/btnEncender" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Iniciar acelerómetro · 2 s" />
+        <Button android:id="@+id/btnApagar" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Detener acelerómetro" />
+        <TextView android:id="@+id/tvLatest" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="ÚLTIMAS LECTURAS · ROOM" android:padding="16dp" android:background="#FFFFFF" android:textColor="#060814" />
+        <TextView android:id="@+id/tvPending" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Room · 0 pendientes" android:paddingTop="16dp" android:textStyle="bold" />
+        <TextView android:id="@+id/tvSync" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Sin sincronizar" android:padding="8dp" />
+        <Button android:id="@+id/btnSettings" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Equipo / acceso Firebase" />
+        <Button android:id="@+id/btnSync" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Sincronizar pendientes (hasta 100)" />
+        <Button android:id="@+id/btnLocal" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Historial local" />
+        <Button android:id="@+id/btnCloud" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Consultar Firestore (servidor)" />
+        <TextView android:id="@+id/tvHistory" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="ROOM · sin mediciones" android:padding="16dp" android:background="#FFFFFF" android:textIsSelectable="true" />
+    </LinearLayout>
+</ScrollView>

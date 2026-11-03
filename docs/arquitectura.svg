@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="650" viewBox="0 0 1080 650">
+<defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0L9 4.5L0 9" fill="none" stroke="#e32f25" stroke-width="1.5"/></marker></defs>
+<rect width="1080" height="650" fill="#f1f1f1"/>
+<g font-family="Arial,sans-serif" fill="#060814">
+<text x="48" y="58" font-size="30" font-weight="bold">Sensor Hub</text>
+<text x="48" y="88" font-size="17">Temperatura y distancia · BLE · almacenamiento local · sincronización controlada</text>
+<g fill="#fff" stroke="#c8d1d9" stroke-width="1.5">
+<rect x="48" y="145" width="230" height="88" rx="12"/>
+<rect x="48" y="260" width="230" height="88" rx="12"/>
+<rect x="350" y="188" width="250" height="120" rx="12"/>
+<rect x="702" y="188" width="320" height="120" rx="12"/>
+<rect x="702" y="370" width="320" height="100" rx="12"/>
+<rect x="350" y="385" width="250" height="100" rx="12"/>
+<rect x="48" y="385" width="230" height="100" rx="12"/>
+<rect x="350" y="540" width="672" height="65" rx="12"/>
+</g>
+<g font-size="21" font-weight="bold">
+<text x="68" y="181">DHT11</text><text x="68" y="296">HC-SR04</text>
+<text x="370" y="226">ESP32</text><text x="722" y="226">Android · cliente GATT</text>
+<text x="722" y="407">Room</text><text x="370" y="421">SensorManager</text>
+<text x="68" y="421">Firestore</text><text x="370" y="579">Dashboard e historial</text>
+</g>
+<g font-size="16">
+<text x="68" y="208">Temperatura · °C</text><text x="68" y="323">Distancia · cm</text>
+<text x="370" y="254">Servidor GATT · Notify</text><text x="370" y="280">Adquisición cada 2 s</text>
+<text x="722" y="254">Suscripción CCCD · 01 00</text><text x="722" y="280">Valida y recompone mensajes</text>
+<text x="722" y="435">ESP32 + ANDROID · UUID estable</text><text x="722" y="457">Pendiente / enviado</text>
+<text x="370" y="448">Aceleración xyz · m/s²</text><text x="370" y="472">Inicio / detención · 2 s</text>
+<text x="68" y="448">Separación por equipo</text><text x="68" y="472">Documento = medicionId</text>
+<text x="642" y="579">Room local / consulta del servidor</text>
+</g>
+<g fill="none" stroke="#e32f25" stroke-width="2.5" marker-end="url(#arrow)">
+<path d="M278 189H315V230H350"/><path d="M278 304H315V268H350"/>
+<path d="M600 248H702"/><path d="M862 308V370"/>
+<path d="M600 435H702"/><path d="M862 470V540"/>
+<path d="M702 505H163V485"/><path d="M163 485V573H350"/>
+</g>
+<text x="628" y="231" font-size="14">BLE</text>
+<text x="343" y="527" font-size="14">Sincronización manual · hasta 100 registros</text>
+<text x="48" y="630" font-size="13" fill="#555">ECHO del HC-SR04 pasa por divisor 5 V → 3.3 V. La ESP32 usa la hora de recepción Android.</text>
+</g></svg>

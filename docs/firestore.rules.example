@@ -1,0 +1,35 @@
+// PROPUESTA: revisar con el docente; no sustituir reglas del grupo automáticamente.
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function member(team) {
+      return request.auth != null &&
+        exists(/databases/$(database)/documents/equipos/$(team)/miembros/$(request.auth.uid));
+    }
+    match /equipos/{team}/mediciones/{id} {
+      allow read: if member(team);
+      allow create: if member(team)
+        && request.resource.data.keys().hasAll(['medicionId','equipoId','dispositivoId','origen','variable','valor','unidad','fechaHora'])
+        && request.resource.data.keys().hasOnly(['medicionId','equipoId','dispositivoId','origen','variable','valor','unidad','fechaHora'])
+        && request.resource.data.medicionId == id
+        && request.resource.data.equipoId == team
+        && request.resource.data.dispositivoId is string
+        && request.resource.data.dispositivoId.size() > 0
+        && request.resource.data.origen in ['ESP32','ANDROID']
+        && request.resource.data.valor is number
+        && request.resource.data.valor >= -1000 && request.resource.data.valor <= 1000
+        && request.resource.data.fechaHora is int && request.resource.data.fechaHora > 0
+        && ((request.resource.data.origen == 'ESP32'
+            && ((request.resource.data.variable == 'temperatura' && request.resource.data.unidad == '°C')
+             || (request.resource.data.variable == 'distancia' && request.resource.data.unidad == 'cm')))
+          || (request.resource.data.origen == 'ANDROID'
+            && request.resource.data.variable in ['aceleracion_x','aceleracion_y','aceleracion_z']
+            && request.resource.data.unidad == 'm/s²'));
+      // Permite reintentar el mismo documento después de una confirmación perdida.
+      allow update: if member(team) && request.resource.data == resource.data;
+      allow delete: if false;
+    }
+    // Los administradores crean membresías por consola/Admin SDK. Clientes no las modifican.
+    match /equipos/{team}/miembros/{uid} { allow read, write: if false; }
+  }
+}
